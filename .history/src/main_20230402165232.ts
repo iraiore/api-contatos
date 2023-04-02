@@ -3,8 +3,7 @@ import router from './router';
 
 const app = express();
 const port = 3000;
-
-app.use(express.json());//add uma configuração para aceitar dados do tipo json
+app
 app.use(router);
 
 
