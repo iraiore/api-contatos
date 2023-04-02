@@ -40,9 +40,9 @@ router.post('/contato', function(request, response){
         message: mensagem
     });
     
-    //rota para receber os dados do novo contato
-    router.post('/contato', function(request, response){
-        console.log(request.body);
-    });
+//rota para receber os dados do novo contato
+router.post('/contato', function(request, response){
+    console.log(request.body);
+});
 });
 export default router;

@@ -20,6 +20,10 @@ router.get('/sobre',function(request, response) {
     });
 });
 
+//rota para receber os dados do novo contato
+router.post('/contato', function(request, response){
+    console.log(request.body);
+});
 
 //retornando os dados do request.body no response da rora /contato
 router.post('/contato', function(request, response){
@@ -38,11 +42,6 @@ router.post('/contato', function(request, response){
     response.send({
         sucess: ok,
         message: mensagem
-    });
-    
-    //rota para receber os dados do novo contato
-    router.post('/contato', function(request, response){
-        console.log(request.body);
     });
 });
 export default router;

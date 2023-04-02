@@ -14,12 +14,16 @@ router.get('/', function(request, response) {
 //rota com as informnações sobre o autor
 router.get('/sobre',function(request, response) {
     response.send({
-        nome:'Pedro Yago',
+        nome:'Pedro Yago13',
         email:'yagoiraiore@gmail.com',
         GitHub: 'github.com/iraiore' 
     });
 });
 
+//rota para receber os dados do novo contato
+router.post('/contato', function(request, response){
+    console.log(request.body);
+});
 
 //retornando os dados do request.body no response da rora /contato
 router.post('/contato', function(request, response){
@@ -38,11 +42,6 @@ router.post('/contato', function(request, response){
     response.send({
         sucess: ok,
         message: mensagem
-    });
-    
-    //rota para receber os dados do novo contato
-    router.post('/contato', function(request, response){
-        console.log(request.body);
     });
 });
 export default router;

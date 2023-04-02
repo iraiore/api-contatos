@@ -39,7 +39,6 @@ router.post('/contato', function(request, response){
         sucess: ok,
         message: mensagem
     });
-    
     //rota para receber os dados do novo contato
     router.post('/contato', function(request, response){
         console.log(request.body);

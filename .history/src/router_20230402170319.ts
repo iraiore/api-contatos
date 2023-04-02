@@ -20,29 +20,13 @@ router.get('/sobre',function(request, response) {
     });
 });
 
+//rota para receber os dados do novo contato
+router.post('/contato', function(request, response){
+    console.log(request.body);
+});
 
 //retornando os dados do request.body no response da rora /contato
 router.post('/contato', function(request, response){
-    let ok = false;
-    let mensagem = "";
-
-    if (request.body.nome == undefined || request.body.nome == "") {
-        if(request.body.nome == "") {
-         mensagem = "A propriedade [nome] não deve estar em branco!";
-        }
-     } else {
-         mensagem = "O contato [" + request.body.nome + "] foi salvo com sucesso!";
-         ok = true;
-     }
-
-    response.send({
-        sucess: ok,
-        message: mensagem
-    });
-    
-    //rota para receber os dados do novo contato
-    router.post('/contato', function(request, response){
-        console.log(request.body);
-    });
+    response.send(request.bod   )
 });
 export default router;
