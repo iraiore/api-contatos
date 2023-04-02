@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "CommonJS",
+    "outDir": "desc",
+    "rootDir": "srx",
+    "esModuleInterop": true,
+    "sourceMap": true,
+  }
+}
