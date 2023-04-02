@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 //Rota principal (/), retornando um arquivo em formato json
-app.get('/', function(request, response) {
+app.get('/', function(request, response){
     response.send({
         api_name: 'api-contatos',
         descricao: 'API para gestão de contatos',
@@ -13,15 +13,7 @@ app.get('/', function(request, response) {
     });
 });
 
-//rota com as informnações sobre o autor
-app.get('/sobre',function(request, response) {
-    response.send({
-        nome:'Pedro Yago',
-        email:'yagoiraiore@gmail.com',
-        GitHub: 'github.com/iraiore' 
-    });
-});
-
+//rota 
 
 app.listen(port, function(){
     console.log(`API up Porta: ${port}`)
