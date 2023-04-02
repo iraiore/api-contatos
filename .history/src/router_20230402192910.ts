@@ -53,7 +53,7 @@ router.post('/contato', function(request, response){
     });
 
     router.get('/contato',function(request, response){
-        response.send(contatos);
+        response.send(contatos)
     })
 });
 export default router;

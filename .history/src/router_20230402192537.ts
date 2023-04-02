@@ -39,7 +39,7 @@ router.post('/contato', function(request, response){
      }
      if(ok){
         id++;
-        contatos.push({id, ...request.body});
+        contatos.push({r}equest.body);
      }
 
     response.send({
@@ -51,9 +51,5 @@ router.post('/contato', function(request, response){
     router.post('/contato', function(request, response){
         console.log(request.body);
     });
-
-    router.get('/contato',function(request, response){
-        response.send(contatos);
-    })
 });
 export default router;

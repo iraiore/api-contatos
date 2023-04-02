@@ -52,8 +52,6 @@ router.post('/contato', function(request, response){
         console.log(request.body);
     });
 
-    router.get('/contato',function(request, response){
-        response.send(contatos);
-    })
+    router.get('/contato',function)
 });
 export default router;
