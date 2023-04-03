@@ -29,7 +29,7 @@ router.get('/sobre',function(request, response) {
 
 //retornando os dados do request.body no response da rora /contato
 router.post('/contato', function(request, response){
-    let ok = false;
+    let ok = ture;
     let mensagem = "";
 
     if (request.body.nome == undefined || request.body.nome == "") {
@@ -43,9 +43,8 @@ router.post('/contato', function(request, response){
      if(ok){
         id++;
 
-        //loadContatos();
         //adiciona o contato na variavel
-        contatos.push({ id, ...request.body });
+        contatos.push({id, ...request.body});
 
         //Escreve no arquivo, salva todos os contatos no arquivo
         fs.writeFileSync(ARQUIVO, JSON.stringify(contatos));
@@ -60,14 +59,14 @@ router.post('/contato', function(request, response){
     router.post('/contato', function(request, response){
         console.log(request.body);
     });
+
+    router.get('/contato',function(request, response){
+        //carrega dados do arquivo
+        loadContatos();
+
+        response.send(contatos);
+    })
 });
-
-router.get('/contato',function(request, response){
-    //carrega dados do arquivo
-    loadContatos();
-
-    response.send(contatos);
-})
 
 //função que carrega todos os dados na variável global contatos
 function loadContatos() {

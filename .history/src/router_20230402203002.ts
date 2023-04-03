@@ -43,7 +43,7 @@ router.post('/contato', function(request, response){
      if(ok){
         id++;
 
-        //loadContatos();
+        loadContatos();
         //adiciona o contato na variavel
         contatos.push({ id, ...request.body });
 

@@ -43,7 +43,6 @@ router.post('/contato', function(request, response){
      if(ok){
         id++;
 
-        //loadContatos();
         //adiciona o contato na variavel
         contatos.push({ id, ...request.body });
 
@@ -60,14 +59,14 @@ router.post('/contato', function(request, response){
     router.post('/contato', function(request, response){
         console.log(request.body);
     });
+
+    router.get('/contato',function(request, response){
+        //carrega dados do arquivo
+        loadContatos();
+
+        response.send(contatos);
+    })
 });
-
-router.get('/contato',function(request, response){
-    //carrega dados do arquivo
-    loadContatos();
-
-    response.send(contatos);
-})
 
 //função que carrega todos os dados na variável global contatos
 function loadContatos() {

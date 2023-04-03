@@ -1,9 +1,8 @@
 import { Router } from 'express';
 import fs from 'fs';
 
-const router = Router();
 const ARQUIVO = `${__dirname}/storage/contatos.json`;
-
+const router = Router();
 
 let id = 0;
 let contatos = Array(); //array para salvar novos contatos
@@ -42,13 +41,7 @@ router.post('/contato', function(request, response){
      }
      if(ok){
         id++;
-
-        //loadContatos();
-        //adiciona o contato na variavel
-        contatos.push({ id, ...request.body });
-
-        //Escreve no arquivo, salva todos os contatos no arquivo
-        fs.writeFileSync(ARQUIVO, JSON.stringify(contatos));
+        contatos.push({id, ...request.body});
      }
 
     response.send({
@@ -60,27 +53,14 @@ router.post('/contato', function(request, response){
     router.post('/contato', function(request, response){
         console.log(request.body);
     });
+
+    router.get('/contato',function(request, response){
+        response.send(contatos);
+    })
 });
 
-router.get('/contato',function(request, response){
-    //carrega dados do arquivo
-    loadContatos();
-
-    response.send(contatos);
-})
-
-//função que carrega todos os dados na variável global contatos
 function loadContatos() {
-
     //verifica se o arquivo já existe, caso não exista ele cria 
-    if (!fs.existsSync(ARQUIVO))
-        fs.writeFileSync(ARQUIVO, JSON.stringify([]));
-        
-     //lê o arquivo e adiciona o conteúdo na variável data
-     const data = fs.readFileSync(ARQUIVO);
-     
-     //converte o conteúdo do arquivo para JSON
-     contatos = JSON.parse(data.toString());
+    
 }
-
 export default router;
