@@ -1,10 +1,8 @@
 import { Router } from 'express';
-import fs from 'fs';
+import { isValidateObjectRequest } from './helpers/validate'; 
+import { loadContatos, saveContato } from './helpers/load-data';  
 
 const router = Router();
-const ARQUIVO = `${__dirname}/storage/contatos.json`;
-
-let contatos = Array(); //array para salvar novos contatos
 
 //Rota principal (/), retornando um arquivo em formato json
 router.get('/', function (request, response) {
@@ -27,27 +25,26 @@ router.get('/sobre', function (request, response) {
 
 //retornando os dados do request.body no response da rora /contato
 router.post('/contato', function (request, response) {
-    let ok = false;
-    let mensagem = "";
+    let ok = true;
+    let mensagem = "Contato salvo com sucesso!";
 
-    if (request.body.nome == undefined || request.body.nome == "") {
-        if (request.body.nome == "") {
-            mensagem = "A propriedade [nome] não deve estar em branco!";
+    const inputs = [
+        {
+            name: "nome",
+            message:"A propriedade [nome] não deve estar em indefinida/vazio!"
+        },
+        {
+            name: "email",
+            message:"A propriedade [email] não deve estar em indefinida/vazio!"            
         }
-    } else {
-        mensagem = "O contato [" + request.body.nome + "] foi salvo com sucesso!";
-        ok = true;
+    ];
+
+    const checkValidate = isValidateObjectRequest(request, inputs)
+
+    if(Array.isArray(checkValidate)){
+        ok = false;
+        
     }
-
-    if (ok) {
-        loadContatos();
-        //adiciona o contato na variavel
-        contatos.push({ id: contatos.length + 1, ...request.body });
-
-        //Escreve no arquivo, salva todos os contatos no arquivo
-        fs.writeFileSync(ARQUIVO, JSON.stringify(contatos));
-    }
-
     response.send({
         sucess: ok,
         message: mensagem

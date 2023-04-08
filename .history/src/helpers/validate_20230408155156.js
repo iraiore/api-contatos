@@ -1,0 +1,1 @@
+function isValidateRequest(request: Any, inputs:)

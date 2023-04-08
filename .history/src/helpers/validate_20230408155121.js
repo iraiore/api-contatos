@@ -1,0 +1,1 @@
+function isValidateRequest(req)
