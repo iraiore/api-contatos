@@ -13,6 +13,7 @@ router.get('/', function (request, response) {
 
 //retornando os dados do request.body no response da rora /contato
 router.post('/', function (request, response) {
+
     let ok = true;
     let mensagem = "Contato salvo com sucesso!";
 
@@ -27,7 +28,9 @@ router.post('/', function (request, response) {
         }
     ];
 
-    const checkValidate = isValidateObjectRequest(request, inputs)
+    const checkValidate = isValidateObjectRequest(request, inputs);
+
+    console.log(checkValidate)
 
     if(Array.isArray(checkValidate)){
         ok = false;

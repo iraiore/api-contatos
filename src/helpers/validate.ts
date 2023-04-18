@@ -13,7 +13,7 @@ function isValidateObjectRequest(request: any, inputs: any[]) {
     let message = [];
 
     for(let i = 0; i < inputs.length; i++){
-        if(request.body[inputs[i]] == undefined || request.body[inputs[i].name] == "") {
+        if(request.body[inputs[i].name] == undefined || request.body[inputs[i].name] == "") {
             message.push(inputs[i].message);
         }
     }
